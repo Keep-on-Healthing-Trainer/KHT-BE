@@ -36,6 +36,8 @@ public class User {
     @NotNull
     private String phoneNumber;
 
+    private String path;
+
     @Builder
     public User(UUID id, String userId, String name, String password, String phoneNumber){
         this.id = id;
@@ -43,6 +45,10 @@ public class User {
         this.name = name;
         this.password = password;
         this.phoneNumber = phoneNumber;
+    }
+
+    public void modifyProfile(String profileImgUrl){
+        this.path = profileImgUrl;
     }
 }
 
