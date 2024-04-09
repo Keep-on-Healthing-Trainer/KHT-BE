@@ -18,8 +18,7 @@ import java.util.UUID;
 @Entity
 public class User {
     @Id
-    @GeneratedValue(generator = "uuid2")
-    @GenericGenerator(name = "uuid2", strategy = "uuid2")
+    @GeneratedValue
     @Column(columnDefinition = "BINARY(16)", nullable = false)
     private UUID id;
 
