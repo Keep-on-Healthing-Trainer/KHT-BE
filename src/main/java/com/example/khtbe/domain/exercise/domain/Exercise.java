@@ -1,9 +1,7 @@
 package com.example.khtbe.domain.exercise.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.example.khtbe.domain.user.domain.User;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -30,10 +28,15 @@ public class Exercise {
     @NotNull
     private Double kcal;
 
+    @ManyToOne
+    @JoinColumn(name = "uuid")
+    private User user;
+
     @Builder
-    public Exercise(Integer count, String exerciseDate, Double kcal){
+    public Exercise(Integer count, String exerciseDate, Double kcal, User user){
         this.count = count;
         this.exerciseDate = LocalDate.now().format(DateTimeFormatter.ofPattern("MM.dd"));
         this.kcal = count*0.9;
+        this.user = user;
     }
 }
