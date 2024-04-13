@@ -18,7 +18,8 @@ import java.util.UUID;
 @Entity
 public class User {
     @Id
-    @GeneratedValue
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(columnDefinition = "BINARY(16)", nullable = false)
     private UUID id;
 
