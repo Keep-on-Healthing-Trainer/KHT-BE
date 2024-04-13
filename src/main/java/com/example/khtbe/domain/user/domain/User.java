@@ -47,8 +47,9 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public void modifyProfile(String profileImgUrl){
+    public String modifyProfile(String profileImgUrl){
         this.path = profileImgUrl;
+        return this.path;
     }
 }
 
