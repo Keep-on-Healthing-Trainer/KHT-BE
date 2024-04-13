@@ -1,13 +1,13 @@
 package com.example.khtbe.domain.exercise.domain;
 
 import com.example.khtbe.domain.user.domain.User;
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 

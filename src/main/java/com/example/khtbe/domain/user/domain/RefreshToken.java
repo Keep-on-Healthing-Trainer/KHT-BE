@@ -1,8 +1,9 @@
 package com.example.khtbe.domain.user.domain;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Id;
 import lombok.Builder;
+
+import javax.persistence.Column;
+import javax.persistence.Id;
 
 public class RefreshToken {
     @Id
