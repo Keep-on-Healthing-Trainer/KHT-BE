@@ -25,18 +25,14 @@ public class Exercise {
     @NotNull
     private String exerciseDate;
 
-    @NotNull
-    private Double kcal;
-
     @ManyToOne
     @JoinColumn(name = "uuid")
     private User user;
 
     @Builder
-    public Exercise(Integer count, String exerciseDate, Double kcal, User user){
+    public Exercise(Integer count, String exerciseDate, User user){
         this.count = count;
         this.exerciseDate = LocalDate.now().format(DateTimeFormatter.ofPattern("MM.dd"));
-        this.kcal = count*0.9;
         this.user = user;
     }
 }
