@@ -9,5 +9,5 @@ import javax.validation.constraints.NotNull;
 public class ExerciseRequest {
     @Max(500)
     @NotNull
-    Integer Count;
+    Integer count;
 }
