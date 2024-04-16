@@ -11,6 +11,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.UUID;
+
 @Component
 @RequiredArgsConstructor
 public class UserUtil {
@@ -27,7 +29,7 @@ public class UserUtil {
         return userRepository.findByUserId(getUserId()).orElseThrow(() -> UserNotFoundException.EXCEPTION);
     }
 
-    public void upload(String userId, MultipartFile file) {
+    public void upload(UUID id, MultipartFile file) {
         if (file != null && !file.isEmpty()) {
             User user = userRepository.findByUserId(getUserId())
                     .orElseThrow(() -> UserNotFoundException.EXCEPTION);
