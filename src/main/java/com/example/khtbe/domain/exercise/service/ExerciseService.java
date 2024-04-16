@@ -40,7 +40,7 @@ public class ExerciseService {
     public ExerciseGraphResponse exerciseGraph(Pageable pageable) {
         Page<Exercise> exercises = exerciseRepository.findExercisesByUser(userUtil.getUser(), pageable);
 
-        return new ExerciseGraphResponse(exercises.getTotalPages(),
+        return new ExerciseGraphResponse((int) exercises.getTotalElements(),
                 exercises.stream().map(this::ofExerciseResponse).collect(Collectors.toList()));
     }
 
