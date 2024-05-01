@@ -1,16 +1,22 @@
 package com.example.khtbe.domain.user.presentation.dto.response;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.UUID;
 
 @Data
+@Getter
+@Setter
 public class UserExerciseCountDTO {
     private String userName;
     private Integer totalCounts;
-    private String profileImageUrl;
+    private String profileImgUrl;
 
-    public UserExerciseCountDTO(String userName, Integer totalCounts, String profileImageUrl) {
+    public UserExerciseCountDTO(String userName, Integer totalCounts, String profileImgUrl) {
         this.userName = userName;
         this.totalCounts = totalCounts;
-        this.profileImageUrl = profileImageUrl;
+        this.profileImgUrl = profileImgUrl;
     }
 }

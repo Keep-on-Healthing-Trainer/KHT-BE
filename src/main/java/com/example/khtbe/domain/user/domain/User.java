@@ -38,6 +38,8 @@ public class User {
 
     private String path;
 
+    private Integer totalCounts = 0;
+
     @Builder
     public User(UUID id, String userId, String name, String password, String phoneNumber){
         this.id = id;
@@ -50,6 +52,10 @@ public class User {
     public String modifyProfile(String profileImgUrl){
         this.path = profileImgUrl;
         return this.path;
+    }
+
+    public void addCounts(int counts) {
+        this.totalCounts += counts;
     }
 }
 

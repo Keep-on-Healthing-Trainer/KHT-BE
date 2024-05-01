@@ -37,6 +37,10 @@ public class ExerciseService {
     public ExerciseResponse exercise(ExerciseRequest request, UUID id) {
         User user = userRepository.findById(id).orElseThrow(() -> UserNotFoundException.EXCEPTION);
 
+        user.addCounts(request.getCount());
+
+        userRepository.save(user);
+
         Exercise exercise = exerciseRepository.save(Exercise.builder()
                 .count(request.getCount())
                 .user(user)
