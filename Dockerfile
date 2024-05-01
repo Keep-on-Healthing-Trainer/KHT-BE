@@ -1,0 +1,43 @@
+FROM openjdk:17-jdk
+
+ARG DB_NAME
+ENV DB_NAME ${DB_NAME}
+
+ARG DB_UN
+ENV DB_UN ${DB_UN}
+
+ARG DB_PW
+ENV DB_PW ${DB_PW}
+
+ARG JWT_KEY
+ENV JWT_KEY ${JWT_KEY}
+
+ARG JWT_AC
+ENV JWT_AC ${JWT_AC}
+
+ARG JWT_RF
+ENV JWT_RF ${JWT_RF}
+
+ARG S3_DF
+ENV S3_DF ${S3_DF}
+
+ARG S3_BK
+ENV S3_BK ${S3_BK}
+
+ARG S3_URL
+ENV S3_URL ${S3_URL}
+
+ARG AWS_AC
+ENV AWS_AC ${AWS_AC}
+
+ARG AWS_RG
+ENV AWS_RG ${AWS_RG}
+
+ARG AWS_SC
+ENV AWS_SC ${AWS_SC}
+
+
+ARG JAR_FILE=build/libs/*.jar
+
+COPY ${JAR_FILE} app.jar
+ENTRYPOINT ["java", "-Dspring.profiles.active=doker", "-jar", "app.jar"]
