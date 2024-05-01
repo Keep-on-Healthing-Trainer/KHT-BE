@@ -26,6 +26,7 @@ public class UserService {
                 .profileImgeUrl(s3Util.getProfileImageUrl(user.getPath()))
                 .totalCounts(exerciseRepository.countByUser(user))
                 .phoneNumber(user.getPhoneNumber())
+                .id(user.getId())
                 .build();
     }
 }
