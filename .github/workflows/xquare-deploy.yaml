@@ -45,3 +45,7 @@ jobs:
             AWS_AC=${{ secrets.AWS_AC }}
             AWS_RG=${{ secrets.AWS_RG }}
             AWS_SC=${{ secrets.AWS_SC }}
+            
+            
+            
+            
