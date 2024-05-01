@@ -29,7 +29,7 @@ public class UserUtil {
         return userRepository.findByUserId(getUserId()).orElseThrow(() -> UserNotFoundException.EXCEPTION);
     }
 
-    public void upload(UUID id, MultipartFile file) {
+    public void upload(String id, MultipartFile file) {
         if (file != null && !file.isEmpty()) {
             User user = userRepository.findByUserId(getUserId())
                     .orElseThrow(() -> UserNotFoundException.EXCEPTION);

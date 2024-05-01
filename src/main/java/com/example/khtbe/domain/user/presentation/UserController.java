@@ -58,9 +58,9 @@ public class UserController {
         return userService.getUser();
     }
 
-    @PostMapping(value = "/modifyProfile/{id}", consumes = {"multipart/form-data"})
+    @PostMapping(value = "/modifyProfile/{userId}", consumes = {"multipart/form-data"})
     @ResponseStatus(HttpStatus.CREATED)
-    public void profileImage(@PathVariable UUID id, @RequestPart(value = "image", required = false) MultipartFile file) {
-        userUtil.upload(id, file);
+    public void profileImage(@PathVariable String userId, @RequestPart(value = "image", required = false) MultipartFile file) {
+        userUtil.upload(userId, file);
     }
 }
