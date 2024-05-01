@@ -70,23 +70,23 @@ public class ExerciseService {
                 .build();
     }
 
-    public int exerciseGetQr(HttpServletRequest request, HttpServletResponse response, IpCheck ic) {
-        try {
-            //qr 시도하는 컴퓨터측 ip 정보
-            String requestIpAddress = ic.getClientIP(request);//qr 로그인 시도하는 컴퓨터측 ip 정보
-
-            //현재 열려있는 서버포트
-            int serverPort = request.getServerPort();
-
-            request.setAttribute("serverPort", serverPort);
-            request.setAttribute("requestIpAddress", requestIpAddress);
-
-            return 1;
-
-        } catch(Exception e) {
-            throw QrBadRequestException.EXCEPTION;
-        }
-    }
+//    public int exerciseGetQr(HttpServletRequest request, HttpServletResponse response, IpCheck ic) {
+//        try {
+//            //qr 시도하는 컴퓨터측 ip 정보
+//            String requestIpAddress = ic.getClientIP(request);//qr 로그인 시도하는 컴퓨터측 ip 정보
+//
+//            //현재 열려있는 서버포트
+//            int serverPort = request.getServerPort();
+//
+//            request.setAttribute("serverPort", serverPort);
+//            request.setAttribute("requestIpAddress", requestIpAddress);
+//
+//            return 1;
+//
+//        } catch(Exception e) {
+//            throw QrBadRequestException.EXCEPTION;
+//        }
+//    }
 
 //    public int loginQrChecking(HttpServletRequest request, HttpServletResponse response, CommonWebsocket cw) {
 //        try {

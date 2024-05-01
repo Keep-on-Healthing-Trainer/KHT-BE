@@ -4,14 +4,11 @@ import com.example.khtbe.domain.exercise.presentation.dto.request.ExerciseReques
 import com.example.khtbe.domain.exercise.presentation.dto.response.ExerciseGraphResponse;
 import com.example.khtbe.domain.exercise.presentation.dto.response.ExerciseResponse;
 import com.example.khtbe.domain.exercise.service.ExerciseService;
-import com.example.khtbe.domain.exercise.service.IpCheck;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.UUID;
 
 @RestController
