@@ -31,10 +31,12 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-websocket'
+    implementation 'javax.websocket:javax.websocket-api:1.1'
     implementation 'com.amazonaws:aws-java-sdk-s3'
     implementation platform ('com.amazonaws:aws-java-sdk-bom:1.11.1000')
-    implementation group: 'com.google.zxing', name: 'javase', version: '3.5.0'
+    implementation group: 'com.google.zxing', name: 'javase', version: '3.1.0'
     implementation group: 'com.google.zxing', name: 'core', version: '3.5.0'
+    implementation 'org.codehaus.jackson:jackson-mapper-asl:1.9.13'
     compileOnly 'org.projectlombok:lombok'
     runtimeOnly 'com.mysql:mysql-connector-j'
     annotationProcessor 'org.projectlombok:lombok'
