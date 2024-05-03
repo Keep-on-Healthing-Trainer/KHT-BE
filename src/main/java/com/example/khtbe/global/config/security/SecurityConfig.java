@@ -41,7 +41,6 @@ public class SecurityConfig extends SecurityConfigurerAdapter {
                 .httpBasic().disable()
                 .authorizeRequests()
                 .antMatchers("/user/**").permitAll()
-                .antMatchers("/post/postImage/*").permitAll()
                 .antMatchers(HttpMethod.GET, "/user").authenticated()
                 .anyRequest().authenticated()
 
