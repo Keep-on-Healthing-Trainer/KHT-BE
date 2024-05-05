@@ -34,6 +34,7 @@ public class UserUtil {
             User user = userRepository.findByUserId(userId)
                     .orElseThrow(() -> UserNotFoundException.EXCEPTION);
             user.modifyProfile(s3Util.upload(file));
+            userRepository.save(user); // 변경 사항 저장
         }
     }
 }

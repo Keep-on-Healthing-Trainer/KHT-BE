@@ -38,28 +38,28 @@ public class S3Util {
 
     public String upload(MultipartFile image) {
         String extension = verificationFile(image);
-        String filePath;
+        String path;
 
         try {
-            filePath = saveImage(image, extension);
+            path = saveImage(image, extension);
         } catch (IOException e) {
             throw ImageUploadFailException.EXCEPTION;
         }
 
-        return filePath;
+        return path;
     }
 
     private String saveImage(MultipartFile file, String extension) throws IOException {
-        String filePath = UUID.randomUUID() + extension;
+        String path = UUID.randomUUID() + extension;
 
         ObjectMetadata objectMetadata = new ObjectMetadata();
         objectMetadata.setContentLength(file.getSize());
         objectMetadata.setContentType(file.getContentType());
 
-        amazonS3.putObject(new PutObjectRequest(bucketName, filePath, file.getInputStream(), objectMetadata)
+        amazonS3.putObject(new PutObjectRequest(bucketName, path, file.getInputStream(), objectMetadata)
                 .withCannedAcl(CannedAccessControlList.PublicRead));
 
-        return filePath;
+        return path;
     }
 
     public String verificationFile(MultipartFile file){
