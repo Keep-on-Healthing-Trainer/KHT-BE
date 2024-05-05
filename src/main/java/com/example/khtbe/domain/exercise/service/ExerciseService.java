@@ -9,8 +9,6 @@ import com.example.khtbe.domain.user.domain.User;
 import com.example.khtbe.domain.user.domain.repository.UserRepository;
 import com.example.khtbe.domain.user.service.exception.UserNotFoundException;
 import com.example.khtbe.domain.user.service.util.UserUtil;
-import com.example.khtbe.global.config.security.auth.AuthService;
-import com.example.khtbe.global.config.socket.SocketService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

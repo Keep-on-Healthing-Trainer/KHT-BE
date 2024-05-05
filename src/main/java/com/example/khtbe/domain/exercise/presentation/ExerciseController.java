@@ -3,13 +3,11 @@ package com.example.khtbe.domain.exercise.presentation;
 import com.example.khtbe.domain.exercise.presentation.dto.request.ExerciseRequest;
 import com.example.khtbe.domain.exercise.presentation.dto.response.ExerciseGraphResponse;
 import com.example.khtbe.domain.exercise.presentation.dto.response.ExerciseResponse;
-import com.example.khtbe.domain.exercise.service.AuthenticationService;
 import com.example.khtbe.domain.exercise.service.ExerciseService;
 import com.example.khtbe.global.config.socket.SocketService;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
