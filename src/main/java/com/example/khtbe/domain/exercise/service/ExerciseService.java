@@ -9,6 +9,8 @@ import com.example.khtbe.domain.user.domain.User;
 import com.example.khtbe.domain.user.domain.repository.UserRepository;
 import com.example.khtbe.domain.user.service.exception.UserNotFoundException;
 import com.example.khtbe.domain.user.service.util.UserUtil;
+import com.example.khtbe.global.config.security.auth.AuthService;
+import com.example.khtbe.global.config.socket.SocketService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -25,6 +27,8 @@ public class ExerciseService {
     private final ExerciseRepository exerciseRepository;
     private final UserRepository userRepository;
     private final UserUtil userUtil;
+    private final AuthService authService;
+    private final SocketService socketService;
 
     @Transactional
     public ExerciseResponse exercise(ExerciseRequest request, UUID id) {
@@ -42,6 +46,7 @@ public class ExerciseService {
         return new ExerciseResponse(exercise.getId(), exercise.getCount(), exercise.getExerciseDate());
     }
 
+    @Transactional
     public ExerciseGraphResponse exerciseGraph(Pageable pageable) {
         Page<Exercise> exercises = exerciseRepository.findExercisesByUser(userUtil.getUser(), pageable);
 
@@ -62,58 +67,4 @@ public class ExerciseService {
                 .exerciseDate(exercise.getExerciseDate())
                 .build();
     }
-
-//    public int exerciseGetQr(HttpServletRequest request, HttpServletResponse response, IpCheck ic) {
-//        try {
-//            //qr 시도하는 컴퓨터측 ip 정보
-//            String requestIpAddress = ic.getClientIP(request);//qr 로그인 시도하는 컴퓨터측 ip 정보
-//
-//            //현재 열려있는 서버포트
-//            int serverPort = request.getServerPort();
-//
-//            request.setAttribute("serverPort", serverPort);
-//            request.setAttribute("requestIpAddress", requestIpAddress);
-//
-//            return 1;
-//
-//        } catch(Exception e) {
-//            throw QrBadRequestException.EXCEPTION;
-//        }
-//    }
-
-//    public int loginQrChecking(HttpServletRequest request, HttpServletResponse response, CommonWebsocket cw) {
-//        try {
-//            String qruuid = request.getParameter("qrUUID");//넘어온 uuid 정보
-//            String QrSeqCode = request.getParameter("QrSeqCode");//유저 고유번호
-//
-//            //이쪽에서 로그인 허용해줘야한다.
-//            Map<String,String> guidLists = cw.guidLists;
-//            List<Session> sessionLists = cw.sessionLists;
-//            Map<String,String> guidUserSeqMap = cw.guidUserSeqMap;
-//
-//            Session selectSession = null;
-//
-//            String sessionId = guidLists.get(qruuid);
-//
-//            for (Session s : sessionLists) {
-//                if (s.getId().equals(sessionId)) {
-//                    selectSession = s;
-//                    break;
-//                }
-//            }
-//
-//            //허용을 해준다면 해당 세션아이디와 복호화된 고객의 고유번호를 넘겨준다
-//            guidUserSeqMap.put(sessionId, decodeQrSeqCode);
-//
-//            final RemoteEndpoint.Basic basic = selectSession.getBasicRemote();
-//            basic.sendText("qruuid," + qruuid);
-//
-//            request.setAttribute("qrResult", "허용");
-//
-//            return 1;
-//
-//        } catch(Exception e) {
-//            throw QrBadRequestException.EXCEPTION;
-//        }
-//    }
 }

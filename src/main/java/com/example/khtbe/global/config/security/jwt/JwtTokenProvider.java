@@ -3,13 +3,7 @@ package com.example.khtbe.global.config.security.jwt;
 import com.example.khtbe.global.config.security.jwt.exception.NotAccessTokenException;
 import com.example.khtbe.global.config.security.jwt.exception.TokenErrorException;
 import com.example.khtbe.global.config.security.jwt.exception.TokenUnauthorizedException;
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.ExpiredJwtException;
-import io.jsonwebtoken.JwsHeader;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.MalformedJwtException;
-import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.UnsupportedJwtException;
+import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import lombok.extern.slf4j.Slf4j;
@@ -90,6 +84,15 @@ public class JwtTokenProvider {
             throw TokenErrorException.EXCEPTION;
         } catch (Exception e) {
             throw TokenUnauthorizedException.EXCEPTION;
+        }
+    }
+
+    public boolean validateAccessToken(String token) {
+        try {
+            Jws<Claims> claims = Jwts.parser().setSigningKey(key).parseClaimsJws(token);
+            return !claims.getBody().getExpiration().before(new Date());
+        } catch (Exception e) {
+            return false;
         }
     }
 
