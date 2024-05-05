@@ -15,6 +15,7 @@ public enum ErrorCode {
     IMAGE_UPLOAD_FAIL(400, "이미지가 정상적으로 저장되지 않았습니다"),
     USER_NOT_MATCH(400, "유저가 일치하지 않습니다."),
     NO_PERMISSION(403, "권한이 없습니다."),
+    QR_BAD_REQUEST(400, "QR이 정상적이지 않습니다."),
 
     //UnAuthorised
     NOT_ACCESS_TOKEN(401, "access 토큰이 아닙니다."),
@@ -24,15 +25,9 @@ public enum ErrorCode {
 
     //Not Found
     USER_NOT_FOUND(404,"찾을 수 없는 유저입니다."),
-    POST_NOT_FOUND(404, "게시글을 찾을 수 없습니다."),
-    COMMENT_NOT_FOUND(404, "댓글을 찾을 수 없습니다."),
     REFRESH_TOKEN_NOT_FOUND(404, "리프레쉬 토큰을 찾을 수 없습니다."),
-    SCHOOL_NOT_FOUND(404, "학교를 찾을 수 없습니다."),
-    REVIEW_NOT_FOUND(404, "리뷰를 찾을 수 없습니다."),
 
-    USER_ID_ALREADY_EXIST(409, "계정 아이디가 이미 존재합니다"),
-    HEART_EXIST(409, "흡족함이 이미 존재합니다"),
-    DELETE_HEART_EXIST(409, "이미 흡족하지 않습니다.");
+    USER_ID_ALREADY_EXIST(409, "계정 아이디가 이미 존재합니다");
 
     private final int statusCode;
     private final String errorMessage;
