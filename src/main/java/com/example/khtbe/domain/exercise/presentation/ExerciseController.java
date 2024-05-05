@@ -23,7 +23,6 @@ import java.util.concurrent.ConcurrentHashMap;
 @RequestMapping("/exercise")
 public class ExerciseController {
     private final ExerciseService exerciseService;
-    private final AuthenticationService authenticationService;
     private final SocketService socketService;
     private ConcurrentHashMap<String, String> guidLists = new ConcurrentHashMap<>();
     @PostMapping("/{id}")
@@ -58,6 +57,6 @@ public class ExerciseController {
     }
 
     private String generateQrCodeImageUrl(String uuid) {
-        return "ws://prod-server.xquare.app/kht/exercise/qr?sessionId=" + uuid;
+        return "ws://prod-server.xquare.app/kht/ws/exercise/qr?sessionId=" + uuid;
     }
 }
