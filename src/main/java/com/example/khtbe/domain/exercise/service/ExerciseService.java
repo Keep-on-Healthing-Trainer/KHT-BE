@@ -27,8 +27,6 @@ public class ExerciseService {
     private final ExerciseRepository exerciseRepository;
     private final UserRepository userRepository;
     private final UserUtil userUtil;
-    private final AuthService authService;
-    private final SocketService socketService;
 
     @Transactional
     public ExerciseResponse exercise(ExerciseRequest request, UUID id) {
