@@ -60,7 +60,8 @@ public class UserController {
 
     @PostMapping(value = "/modifyProfile/{userId}", consumes = {"multipart/form-data"})
     @ResponseStatus(HttpStatus.CREATED)
-    public void profileImage(@PathVariable String userId, @RequestPart(value = "image", required = false) MultipartFile file) {
+    public String profileImage(@PathVariable String userId, @RequestPart(value = "image", required = false) MultipartFile file) {
         userUtil.upload(userId, file);
+        return "아무 문자열";
     }
 }
