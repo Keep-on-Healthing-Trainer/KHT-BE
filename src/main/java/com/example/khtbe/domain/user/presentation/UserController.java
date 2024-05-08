@@ -1,5 +1,6 @@
 package com.example.khtbe.domain.user.presentation;
 
+import com.example.khtbe.domain.user.domain.User;
 import com.example.khtbe.domain.user.presentation.dto.request.LoginRequest;
 import com.example.khtbe.domain.user.presentation.dto.request.SignupRequest;
 import com.example.khtbe.domain.user.presentation.dto.response.TokenResponse;
@@ -9,6 +10,7 @@ import com.example.khtbe.domain.user.service.UserLoginService;
 import com.example.khtbe.domain.user.service.UserService;
 import com.example.khtbe.domain.user.service.UserSignupService;
 import com.example.khtbe.domain.user.service.util.UserUtil;
+import com.example.khtbe.infra.aws.util.S3Util;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,6 +36,7 @@ public class UserController {
     private final TokenRefreshService tokenRefreshService;
     private final UserService userService;
     private final UserUtil userUtil;
+    private final S3Util s3Util;
 
     @PostMapping(value = "/signup")
     @ResponseStatus(HttpStatus.CREATED)
@@ -60,8 +63,7 @@ public class UserController {
 
     @PostMapping(value = "/modifyProfile/{userId}", consumes = {"multipart/form-data"})
     @ResponseStatus(HttpStatus.CREATED)
-    public String profileImage(@PathVariable String userId, @RequestPart(value = "image", required = false) MultipartFile file) {
+    public void profileImage(@PathVariable String userId, @RequestPart(value = "image", required = false) MultipartFile file) {
         userUtil.upload(userId, file);
-        return "아무 문자열";
     }
 }

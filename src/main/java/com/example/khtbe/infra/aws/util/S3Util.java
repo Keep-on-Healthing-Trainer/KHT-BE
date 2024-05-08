@@ -14,6 +14,8 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.UUID;
 
+import static org.aspectj.weaver.tools.cache.SimpleCacheFactory.path;
+
 @RequiredArgsConstructor
 @Component
 public class S3Util {
@@ -38,28 +40,28 @@ public class S3Util {
 
     public String upload(MultipartFile image) {
         String extension = verificationFile(image);
-        String path;
+        String filePath;
 
         try {
-            path = saveImage(image, extension);
+            filePath = saveImage(image, extension);
         } catch (IOException e) {
             throw ImageUploadFailException.EXCEPTION;
         }
 
-        return path;
+        return filePath;
     }
 
     private String saveImage(MultipartFile file, String extension) throws IOException {
-        String path = UUID.randomUUID() + extension;
+        String filePath = UUID.randomUUID() + extension;
 
         ObjectMetadata objectMetadata = new ObjectMetadata();
         objectMetadata.setContentLength(file.getSize());
         objectMetadata.setContentType(file.getContentType());
 
-        amazonS3.putObject(new PutObjectRequest(bucketName, path, file.getInputStream(), objectMetadata)
+        amazonS3.putObject(new PutObjectRequest(bucketName, filePath, file.getInputStream(), objectMetadata)
                 .withCannedAcl(CannedAccessControlList.PublicRead));
 
-        return path;
+        return filePath;
     }
 
     public String verificationFile(MultipartFile file){
