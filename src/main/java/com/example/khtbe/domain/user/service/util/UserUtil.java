@@ -29,14 +29,12 @@ public class UserUtil {
         return userRepository.findByUserId(getUserId()).orElseThrow(() -> UserNotFoundException.EXCEPTION);
     }
 
-    public User upload(String userId, MultipartFile file) {
+    public void upload(String userId, MultipartFile file) {
         if (file != null && !file.isEmpty()) {
             User user = userRepository.findByUserId(getUserId())
                     .orElseThrow(() -> UserNotFoundException.EXCEPTION);
             user.modifyProfile(s3Util.upload(file));
             userRepository.save(user);
         }
-
-        return getUser();
     }
 }
