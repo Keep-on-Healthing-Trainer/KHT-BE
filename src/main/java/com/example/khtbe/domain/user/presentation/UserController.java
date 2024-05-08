@@ -65,6 +65,6 @@ public class UserController {
     @ResponseStatus(HttpStatus.CREATED)
     public UserDetailResponse profileImage(@PathVariable String userId, @RequestPart(value = "image", required = false) MultipartFile file) {
         userUtil.upload(userId, file);
-        return getUser();
+        return userService.getUser();
     }
 }
