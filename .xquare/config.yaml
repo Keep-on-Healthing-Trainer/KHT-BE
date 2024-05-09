@@ -1,7 +1,7 @@
 config:
   name: kht
   service_type: be
-  port: 8080
+  port: 8089
   domain:
     prod: kht.xquare.app
     stag: kht-stag.xquare.app
