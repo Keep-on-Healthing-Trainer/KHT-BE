@@ -15,7 +15,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(BaseException.class)
     protected ResponseEntity<ErrorResponse> UphandlerException(BaseException e) {
-        log.error("[UpException] : " + e.getErrorCode().getErrorMessage(), e);
+        log.error("[KHTException] : " + e.getErrorCode().getErrorMessage(), e);
         return new ResponseEntity<>(new ErrorResponse(e.getErrorCode().getStatusCode(), e.getErrorCode().getErrorMessage()), HttpStatus.valueOf(e.getErrorCode().getStatusCode()));
     }
 
