@@ -67,4 +67,5 @@ public class UserController {
         userUtil.upload(userId, file);
         return userService.getUser();
     }
+    
 }
