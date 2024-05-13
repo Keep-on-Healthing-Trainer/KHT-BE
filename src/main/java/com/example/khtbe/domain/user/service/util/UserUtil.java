@@ -33,7 +33,7 @@ public class UserUtil {
         System.out.println(file);
         System.out.println("[이게 file임~~]");
         if (file != null && !file.isEmpty()) {
-            User user = userRepository.findByUserId(getUserId())
+            User user = userRepository.findByUserId(userId)
                     .orElseThrow(() -> UserNotFoundException.EXCEPTION);
             user.modifyProfile(s3Util.upload(file));
             userRepository.save(user);
