@@ -30,6 +30,8 @@ public class UserUtil {
     }
 
     public void upload(String userId, MultipartFile file) {
+        System.out.println(file);
+        System.out.println("[이게 file임~~]");
         if (file != null && !file.isEmpty()) {
             User user = userRepository.findByUserId(getUserId())
                     .orElseThrow(() -> UserNotFoundException.EXCEPTION);
