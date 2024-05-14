@@ -29,7 +29,7 @@ public class Exercise {
 
     @NotNull
     private String exerciseDate;
-
+ 
     @ManyToOne
     @JoinColumn(name = "uuid")
     private User user;
