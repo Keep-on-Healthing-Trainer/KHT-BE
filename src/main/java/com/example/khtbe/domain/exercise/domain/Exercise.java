@@ -26,10 +26,10 @@ public class Exercise {
 
     @NotNull
     private Integer count;
-
+    
     @NotNull
     private String exerciseDate;
- 
+
     @ManyToOne
     @JoinColumn(name = "uuid")
     private User user;
