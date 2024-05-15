@@ -26,7 +26,7 @@ public class Exercise {
 
     @NotNull
     private Integer count;
-    
+
     @NotNull
     private String exerciseDate;
 
