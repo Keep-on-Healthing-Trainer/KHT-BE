@@ -33,7 +33,7 @@ public class ExerciseController {
         return exerciseService.exerciseGraph(pageable);
     }
 
-    @RequestMapping(value="/qr", method=RequestMethod.GET)
+    @GetMapping("/qr")
     public String getQrCode(HttpServletRequest request, HttpServletResponse response) {
         // HttpSession 객체를 가져옵니다.
         HttpSession session = request.getSession();
