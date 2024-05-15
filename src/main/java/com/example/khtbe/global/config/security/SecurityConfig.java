@@ -57,7 +57,7 @@ public class SecurityConfig extends SecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/user/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/user").authenticated()
-                .antMatchers("/kht/exercise/qr").permitAll()
+                .antMatchers("/exercise/qr").permitAll()
                 .antMatchers("/ws/**").permitAll()
                 .anyRequest().authenticated()
 
