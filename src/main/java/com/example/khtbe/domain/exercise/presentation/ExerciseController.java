@@ -55,6 +55,6 @@ public class ExerciseController {
     }
 
     private String generateQrCodeImageUrl(String uuid) {
-        return "ws://kht.xquare.app/kht/ws/exercise?sessionId=" + uuid;
+        return "ws://kht.xquare.app/ws/exercise?sessionId=" + uuid;
     }
 }
