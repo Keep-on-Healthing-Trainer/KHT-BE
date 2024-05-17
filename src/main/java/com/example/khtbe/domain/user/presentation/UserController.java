@@ -3,6 +3,7 @@ package com.example.khtbe.domain.user.presentation;
 import com.example.khtbe.domain.user.domain.User;
 import com.example.khtbe.domain.user.presentation.dto.request.LoginRequest;
 import com.example.khtbe.domain.user.presentation.dto.request.SignupRequest;
+import com.example.khtbe.domain.user.presentation.dto.request.UpdateRequest;
 import com.example.khtbe.domain.user.presentation.dto.response.TokenResponse;
 import com.example.khtbe.domain.user.presentation.dto.response.UserDetailResponse;
 import com.example.khtbe.domain.user.service.TokenRefreshService;
@@ -57,5 +58,10 @@ public class UserController {
     @ResponseStatus(HttpStatus.CREATED)
     public void profileImage(@RequestPart(value = "userId") String userId, @RequestPart(value = "image", required = false) MultipartFile file) {
         userUtil.upload(userId, file);
+    }
+
+    @PatchMapping
+    public void updateUser(@RequestBody @Valid UpdateRequest request){
+        userService.updateUser(request);
     }
 }
