@@ -11,5 +11,5 @@ public interface UserRepository extends JpaRepository<User, String> {
     Optional<User> findByUserId(String userId);
     Optional<User> findById(UUID id);
     boolean existsByUserId(String userId);
-    List<User> findTop10ByOrderByTotalCountsDesc();
+    List<User> findUserByOrderByTotalCountsDesc();
 }

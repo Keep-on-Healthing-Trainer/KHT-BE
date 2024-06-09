@@ -28,7 +28,7 @@ public class RankService {
         this.s3Util = s3Util;
     }
     public List<UserExerciseCountDTO> getRankings() {
-        List<User> topUsers = userRepository.findTop10ByOrderByTotalCountsDesc();
+        List<User> topUsers = userRepository.findUserByOrderByTotalCountsDesc();
 
         return topUsers.stream().map(user -> new UserExerciseCountDTO(
                 user.getName(),
