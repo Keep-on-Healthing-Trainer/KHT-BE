@@ -38,6 +38,12 @@ public class User {
 
     private Integer totalCounts = 0;
 
+    private Integer sitUpCounts = 0;
+
+    private Integer pushUpCounts = 0;
+
+    private Integer squatCounts = 0;
+
     @Builder
     public User(UUID id, String userId, String name, String password, String phoneNumber){
         this.id = id;
@@ -54,6 +60,18 @@ public class User {
 
     public void addCounts(int counts) {
         this.totalCounts += counts;
+    }
+
+    public void addPushUpCounts(int counts) {
+        this.pushUpCounts += counts;
+    }
+
+    public void addSitUpCounts(int counts) {
+        this.sitUpCounts += counts;
+    }
+
+    public void addSquatCounts(int counts) {
+        this.squatCounts += counts;
     }
 }
 

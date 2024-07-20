@@ -28,6 +28,9 @@ public class UserService {
                 .userId(user.getUserId())
                 .profileImgeUrl(s3Util.getProfileImageUrl(user.getPath()))
                 .totalCounts(user.getTotalCounts())
+                .squatCounts(user.getSquatCounts())
+                .pushUpCounts(user.getPushUpCounts())
+                .sitUpCounts(user.getSitUpCounts())
                 .phoneNumber(user.getPhoneNumber())
                 .id(user.getId())
                 .build();
