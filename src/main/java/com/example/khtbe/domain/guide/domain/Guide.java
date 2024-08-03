@@ -1,5 +1,6 @@
 package com.example.khtbe.domain.guide.domain;
 
+import com.example.khtbe.domain.guide.domain.tags.tagsEnum;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -35,8 +36,8 @@ public class Guide {
     @Column(nullable = false)
     private String introduction;
 
-    @ElementCollection
-    private Set<String> tags;
+    @ElementCollection(targetClass = tagsEnum.class)
+    private Set<tagsEnum> tags;
 
     private String path;
 
@@ -48,10 +49,5 @@ public class Guide {
         this.exerciseMethod = exerciseMethod;
         this.introduction = introduction;
         this.path = path;
-    }
-
-    public String updatePath(String path) {
-        this.path = path;
-        return path;
     }
 }
