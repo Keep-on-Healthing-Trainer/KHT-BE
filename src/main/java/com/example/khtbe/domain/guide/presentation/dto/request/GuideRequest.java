@@ -1,9 +1,10 @@
 package com.example.khtbe.domain.guide.presentation.dto.request;
 
+import com.example.khtbe.domain.guide.domain.tags.tagsEnum;
 import lombok.Getter;
 
 import javax.validation.constraints.NotBlank;
-import java.util.Set;
+import java.util.List;
 
 @Getter
 public class GuideRequest {
@@ -24,5 +25,5 @@ public class GuideRequest {
 
     private String path;
 
-    private Set<String> tags;
+    private List<tagsEnum> tags;
 }
