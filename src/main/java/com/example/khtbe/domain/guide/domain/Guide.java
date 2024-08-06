@@ -42,12 +42,13 @@ public class Guide {
     private String path;
 
     @Builder
-    public Guide(String title, String startPosture, String exerciseMethod, String warning, String introduction, String path){
+    public Guide(String title, String startPosture, String exerciseMethod, String warning, String introduction, String path, Set<tagsEnum> tags){
         this.title = title;
         this.startPosture = startPosture;
         this.warning = warning;
         this.exerciseMethod = exerciseMethod;
         this.introduction = introduction;
         this.path = path;
+        this.tags = tags;
     }
 }
