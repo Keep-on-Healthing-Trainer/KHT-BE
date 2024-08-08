@@ -27,7 +27,11 @@ public enum ErrorCode {
     USER_NOT_FOUND(404,"찾을 수 없는 유저입니다."),
     REFRESH_TOKEN_NOT_FOUND(404, "리프레쉬 토큰을 찾을 수 없습니다."),
 
-    USER_ID_ALREADY_EXIST(409, "계정 아이디가 이미 존재합니다");
+    USER_ID_ALREADY_EXIST(409, "계정 아이디가 이미 존재합니다"),
+
+    COMMENT_NOT_FOUND(404, "댓글을 찾을 수 없습니다."),
+    POST_NOT_FOUND(404, "게시글을 찾을 수 없습니다.");
+
 
     private final int statusCode;
     private final String errorMessage;
