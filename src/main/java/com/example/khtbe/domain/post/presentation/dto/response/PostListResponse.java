@@ -5,12 +5,11 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
+import java.util.PrimitiveIterator;
 
 @Getter
 @RequiredArgsConstructor
 public class PostListResponse {
-
-    private final int totalPosts;
     private final List<PostResponse> postResponses;
 
     @Getter
@@ -20,5 +19,7 @@ public class PostListResponse {
         private final String userNickname;
         private final String profile;
         private final String title;
+        private final String content;
+        private final String path;
     }
 }

@@ -29,8 +29,10 @@ public class PostListService {
         return PostListResponse.PostResponse.builder()
                 .id(post.getId())
                 .title(post.getTitle())
+                .content(post.getContent())
                 .userNickname(post.getUser().getName())
                 .profile(s3Util.getProfileImageUrl(post.getUser().getPath()))
+                .path(s3Util.getPostImageUrl(post.getPath()))
                 .build();
     }
 }
