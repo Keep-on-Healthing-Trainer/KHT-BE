@@ -27,6 +27,8 @@ public class Post {
     private String content;
 
     private String path;
+
+    private Integer heartCount = 0;
   
     @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
     private List<Comment> comments = new ArrayList<>();
