@@ -52,4 +52,11 @@ public class PostService {
 
         post.updatePath(s3Util.upload(file));
     }
+
+    @Transactional(readOnly = true)
+    public int getCommentCount(Long postId) {
+        Post post = postRepository.findById(postId)
+                .orElseThrow(() -> PostNotFoundException.EXCEPTION);
+        return post.getCommentCount();
+    }
 }

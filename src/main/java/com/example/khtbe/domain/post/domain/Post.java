@@ -47,4 +47,8 @@ public class Post {
         this.path = path;
         return this.path;
     }
+
+    public int getCommentCount() {
+        return comments.size();
+    }
 }

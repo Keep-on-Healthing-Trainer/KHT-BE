@@ -10,6 +10,7 @@ import com.example.khtbe.domain.post.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -52,5 +53,11 @@ public class PostController {
     @GetMapping("/list")
     public List<PostListResponse.PostResponse> getPostList() {
         return postListService.getPostList();
+    }
+
+    @GetMapping("/{id}/comments/count")
+    public ResponseEntity<Integer> getCommentCount(@PathVariable Long id) {
+        int count = postService.getCommentCount(id);
+        return ResponseEntity.ok(count);
     }
 }
