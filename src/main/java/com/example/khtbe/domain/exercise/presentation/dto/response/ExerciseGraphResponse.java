@@ -9,8 +9,12 @@ import java.util.List;
 @Getter
 @RequiredArgsConstructor
 public class ExerciseGraphResponse {
-    private final int totalCounts;
-    private final List<ExerciseResponse> exerciseResponses;
+    private final int totalSitUpCounts;
+    private final List<ExerciseResponse> sitUpResponses;
+    private final int totalPushUpCounts;
+    private final List<ExerciseResponse> pushUpResponses;
+    private final int totalSquatCounts;
+    private final List<ExerciseResponse> squatResponses;
 
     @Builder
     @Getter

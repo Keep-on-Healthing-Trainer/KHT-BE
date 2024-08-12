@@ -54,19 +54,29 @@ public class ExerciseService {
 
         return new ExerciseResponse(exercise.getId(), exercise.getCount(), exercise.getExerciseDate(), exercise.getExType().getExType());
     }
-
     @Transactional
     public ExerciseGraphResponse exerciseGraph(Pageable pageable) {
-        Page<Exercise> exercises = exerciseRepository.findExercisesByUser(userUtil.getUser(), pageable);
+        User user = userUtil.getUser();
 
-        // 운동 횟수의 총합 계산
-        int totalCounts = exercises.getContent().stream().mapToInt(Exercise::getCount).sum();
+        Page<Exercise> sitUpExercises = exerciseRepository.findExercisesByUserAndExType(user, Exercise.ExerciseType.SITUP, pageable);
+        Page<Exercise> pushUpExercises = exerciseRepository.findExercisesByUserAndExType(user, Exercise.ExerciseType.PUSHUP, pageable);
+        Page<Exercise> squatExercises = exerciseRepository.findExercisesByUserAndExType(user, Exercise.ExerciseType.SQUAT, pageable);
 
-        List<ExerciseGraphResponse.ExerciseResponse> responses = exercises.getContent().stream()
+        int totalSitUpCounts = sitUpExercises.getContent().stream().mapToInt(Exercise::getCount).sum();
+        int totalPushUpCounts = pushUpExercises.getContent().stream().mapToInt(Exercise::getCount).sum();
+        int totalSquatCounts = squatExercises.getContent().stream().mapToInt(Exercise::getCount).sum();
+
+        List<ExerciseGraphResponse.ExerciseResponse> sitUpResponses = sitUpExercises.getContent().stream()
+                .map(this::ofExerciseResponse)
+                .collect(Collectors.toList());
+        List<ExerciseGraphResponse.ExerciseResponse> pushUpResponses = pushUpExercises.getContent().stream()
+                .map(this::ofExerciseResponse)
+                .collect(Collectors.toList());
+        List<ExerciseGraphResponse.ExerciseResponse> squatResponses = squatExercises.getContent().stream()
                 .map(this::ofExerciseResponse)
                 .collect(Collectors.toList());
 
-        return new ExerciseGraphResponse(totalCounts, responses);
+        return new ExerciseGraphResponse(totalSitUpCounts, sitUpResponses, totalPushUpCounts, pushUpResponses, totalSquatCounts, squatResponses);
     }
 
     private ExerciseGraphResponse.ExerciseResponse ofExerciseResponse(Exercise exercise) {
