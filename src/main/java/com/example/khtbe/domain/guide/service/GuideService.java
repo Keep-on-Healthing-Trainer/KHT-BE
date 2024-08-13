@@ -32,8 +32,11 @@ public class GuideService {
         return new ReturnGuideIdResponse(guide.getId());
     }
 
-    public List<Guide> findGuidesByTitleOrTag(String keyword, tagsEnum tagName) {
-        return guideRepository.findByTitleOrTag(keyword, tagName);
+    public List<Guide> findGuidesByTitleAndTag(String keyword, tagsEnum tagName) {
+        if (tagName == null) {
+            return guideRepository.findByTitle(keyword);
+        }
+        return guideRepository.findByTitleAndTag(keyword, tagName);
     }
 }
 

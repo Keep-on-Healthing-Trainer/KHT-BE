@@ -38,6 +38,6 @@ public class GuideController {
             }
         }
 
-        return guideService.findGuidesByTitleOrTag(title, tagEnum);
+        return guideService.findGuidesByTitleAndTag(title, tagEnum);
     }
 }
