@@ -6,7 +6,13 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public enum tagsEnum {
-    유산소("유산소"), 어깨("어깨"), 팔("팔"), 복근("복근"), 등("등"), 허벅지("허벅지"), 종아리("종아리");
+    CARDIO("유산소"),
+    SHOULDER("어깨"),
+    ARM("팔"),
+    ABDOMINAL("복근"),
+    BACK("등"),
+    THIGH("허벅지"),
+    CALF("종아리");
 
-    private final String major;
+    private final String tags;
 }
