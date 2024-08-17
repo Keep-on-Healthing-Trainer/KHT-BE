@@ -5,16 +5,11 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Set;
 
-@Entity
 @Getter
+@Entity
 @RequiredArgsConstructor
 public class Guide {
     @Id
@@ -37,6 +32,7 @@ public class Guide {
     private String introduction;
 
     @ElementCollection(targetClass = tagsEnum.class)
+    @Enumerated(EnumType.STRING)
     private Set<tagsEnum> tags;
 
     private String path;
@@ -45,8 +41,8 @@ public class Guide {
     public Guide(String title, String startPosture, String exerciseMethod, String warning, String introduction, String path, Set<tagsEnum> tags){
         this.title = title;
         this.startPosture = startPosture;
-        this.warning = warning;
         this.exerciseMethod = exerciseMethod;
+        this.warning = warning;
         this.introduction = introduction;
         this.path = path;
         this.tags = tags;

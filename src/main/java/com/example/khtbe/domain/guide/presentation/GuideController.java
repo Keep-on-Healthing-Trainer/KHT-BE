@@ -5,8 +5,11 @@ import com.example.khtbe.domain.guide.domain.tags.tagsEnum;
 import com.example.khtbe.domain.guide.presentation.dto.request.GuideRequest;
 import com.example.khtbe.domain.guide.presentation.dto.response.ReturnGuideIdResponse;
 import com.example.khtbe.domain.guide.service.GuideService;
+import com.example.khtbe.domain.user.domain.User;
+import com.example.khtbe.domain.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -18,6 +21,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class GuideController {
     private final GuideService guideService;
+    private final UserService userService;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -39,5 +43,10 @@ public class GuideController {
         }
 
         return guideService.findGuidesByTitleAndTag(title, tagEnum);
+    }
+
+    @GetMapping("/recommend")
+    public List<Guide> findRecommendedGuides() {
+        return guideService.findRecommendedGuides();
     }
 }

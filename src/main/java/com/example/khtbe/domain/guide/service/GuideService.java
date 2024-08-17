@@ -5,6 +5,8 @@ import com.example.khtbe.domain.guide.domain.repository.GuideRepository;
 import com.example.khtbe.domain.guide.domain.tags.tagsEnum;
 import com.example.khtbe.domain.guide.presentation.dto.request.GuideRequest;
 import com.example.khtbe.domain.guide.presentation.dto.response.ReturnGuideIdResponse;
+import com.example.khtbe.domain.user.domain.User;
+import com.example.khtbe.domain.user.service.util.UserUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +18,7 @@ import java.util.Set;
 @RequiredArgsConstructor
 public class GuideService {
     private final GuideRepository guideRepository;
+    private final UserUtil userUtil;
 
     @Transactional
     public ReturnGuideIdResponse create(GuideRequest request) {
@@ -37,6 +40,12 @@ public class GuideService {
             return guideRepository.findByTitle(keyword);
         }
         return guideRepository.findByTitleAndTag(keyword, tagName);
+    }
+
+    public List<Guide> findRecommendedGuides() {
+        User user = userUtil.getUser();
+        Set<tagsEnum> uncomfortableParts = user.getUncomfortableParts();
+        return guideRepository.findByTagsNotIn(uncomfortableParts);
     }
 }
 

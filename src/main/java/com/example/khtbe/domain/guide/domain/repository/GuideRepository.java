@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Set;
 
 public interface GuideRepository extends JpaRepository<Guide, Long> {
     @Query("SELECT g FROM Guide g JOIN g.tags t WHERE g.title LIKE %:keyword% AND t = :tagName")
@@ -14,4 +15,8 @@ public interface GuideRepository extends JpaRepository<Guide, Long> {
 
     @Query("SELECT g FROM Guide g WHERE g.title LIKE %:keyword%")
     List<Guide> findByTitle(@Param("keyword") String keyword);
+
+    @Query("SELECT g FROM Guide g WHERE NOT EXISTS (" +
+            "SELECT 1 FROM g.tags t WHERE t IN :uncomfortableParts)")
+    List<Guide> findByTagsNotIn(@Param("uncomfortableParts") Set<tagsEnum> uncomfortableParts);
 }
