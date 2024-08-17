@@ -1,13 +1,12 @@
 package com.example.khtbe.domain.user.domain;
 
+import com.example.khtbe.domain.guide.domain.tags.tagsEnum;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Set;
 import java.util.UUID;
 
 @Getter
@@ -44,13 +43,18 @@ public class User {
 
     private Integer squatCounts = 0;
 
+    @ElementCollection(targetClass = tagsEnum.class)
+    @Enumerated(EnumType.STRING)
+    private Set<tagsEnum> uncomfortableParts;
+
     @Builder
-    public User(UUID id, String userId, String name, String password, String phoneNumber){
+    public User(UUID id, String userId, String name, String password, String phoneNumber, Set<tagsEnum> uncomfortableParts){
         this.id = id;
         this.userId = userId;
         this.name = name;
         this.password = password;
         this.phoneNumber = phoneNumber;
+        this.uncomfortableParts = uncomfortableParts;
     }
 
     public String modifyProfile(String path){

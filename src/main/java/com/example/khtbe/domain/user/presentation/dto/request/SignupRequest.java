@@ -1,9 +1,11 @@
 package com.example.khtbe.domain.user.presentation.dto.request;
 
+import com.example.khtbe.domain.guide.domain.tags.tagsEnum;
 import lombok.Getter;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.Set;
 
 @Getter
 public class SignupRequest {
@@ -22,4 +24,6 @@ public class SignupRequest {
     @NotNull
     @Size(max = 11)
     private String phoneNumber;
+
+    private Set<tagsEnum> uncomfortableParts;
 }
