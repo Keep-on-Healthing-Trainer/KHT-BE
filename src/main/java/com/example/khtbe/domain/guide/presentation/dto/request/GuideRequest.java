@@ -17,7 +17,7 @@ public class GuideRequest {
     @NotBlank
     private String exerciseMethod;
 
-    @NotBlank
+    @NotBlank 
     private String warning;
 
     @NotBlank
