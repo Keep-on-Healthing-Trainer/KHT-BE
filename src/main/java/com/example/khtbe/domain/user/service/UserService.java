@@ -1,6 +1,5 @@
 package com.example.khtbe.domain.user.service;
 
-import com.example.khtbe.domain.exercise.domain.repository.ExerciseRepository;
 import com.example.khtbe.domain.user.domain.User;
 import com.example.khtbe.domain.user.domain.repository.UserRepository;
 import com.example.khtbe.domain.user.presentation.dto.request.UpdateRequest;
@@ -11,13 +10,14 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class UserService {
     private final UserUtil userUtil;
     private final S3Util s3Util;
     private final UserRepository userRepository;
-    private final ExerciseRepository exerciseRepository;
 
     @Transactional
     public UserDetailResponse getUser() {
@@ -45,5 +45,10 @@ public class UserService {
         if(request.getPhoneNumber() != null) user.setPhoneNumber(request.getPhoneNumber());
 
         userRepository.save(user);
+    }
+
+    @Transactional
+    public List<User> userList(String name) {
+        return userRepository.findByNameContaining(name);
     }
 }

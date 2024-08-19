@@ -1,5 +1,6 @@
 package com.example.khtbe.domain.user.presentation;
 
+import com.example.khtbe.domain.user.domain.User;
 import com.example.khtbe.domain.user.presentation.dto.request.LoginRequest;
 import com.example.khtbe.domain.user.presentation.dto.request.SignupRequest;
 import com.example.khtbe.domain.user.presentation.dto.request.UpdateRequest;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -62,5 +64,10 @@ public class UserController {
     @PatchMapping
     public void updateUser(@RequestBody @Valid UpdateRequest request){
         userService.updateUser(request);
+    }
+
+    @GetMapping("/search")
+    public List<User> userList(@RequestParam(value = "name", required = false) String name) {
+        return userService.userList(name);
     }
 }
