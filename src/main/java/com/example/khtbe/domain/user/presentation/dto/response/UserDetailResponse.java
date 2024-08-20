@@ -15,14 +15,12 @@ public class UserDetailResponse {
     private final Integer sitUpCounts;
     private final Integer pushUpCounts;
     private final Integer squatCounts;
-    private final String path;
     private final UUID id;
 
     @Builder
-    public UserDetailResponse (String name, String userId, String profileImgeUrl, String phoneNumber,Integer totalCounts, Integer sitUpCounts, Integer pushUpCounts, Integer squatCounts, UUID id, String path) {
+    public UserDetailResponse (String name, String userId, String profileImgeUrl, String phoneNumber,Integer totalCounts, Integer sitUpCounts, Integer pushUpCounts, Integer squatCounts, UUID id) {
         this.name = name;
         this.userId = userId;
-        this.path = path;
         this.profileImgeUrl = profileImgeUrl;
         this.phoneNumber = phoneNumber;
         this.totalCounts = totalCounts;

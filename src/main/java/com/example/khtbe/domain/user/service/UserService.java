@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -48,7 +49,21 @@ public class UserService {
     }
 
     @Transactional
-    public List<User> userList(String name) {
-        return userRepository.findByNameContaining(name);
+    public List<UserDetailResponse> userList(String name) {
+        List<User> users = userRepository.findByNameContaining(name);
+
+        return users.stream()
+                .map(user -> UserDetailResponse.builder()
+                        .name(user.getName())
+                        .userId(user.getUserId())
+                        .profileImgeUrl(s3Util.getProfileImageUrl(user.getPath())) // 프로필 이미지 URL 설정
+                        .totalCounts(user.getTotalCounts())
+                        .squatCounts(user.getSquatCounts())
+                        .pushUpCounts(user.getPushUpCounts())
+                        .sitUpCounts(user.getSitUpCounts())
+                        .phoneNumber(user.getPhoneNumber())
+                        .id(user.getId())
+                        .build())
+                .collect(Collectors.toList());
     }
 }
