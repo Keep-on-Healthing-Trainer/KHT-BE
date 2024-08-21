@@ -32,15 +32,15 @@ public class ExerciseService {
 
         user.addCounts(request.getCount());
 
-        if(request.getType().equals("SITUP")) {
+        if(request.getExType().equals("SITUP")) {
             user.addSitUpCounts(request.getCount());
         }
 
-        if(request.getType().equals("PUSHUP")) {
+        if(request.getExType().equals("PUSHUP")) {
             user.addPushUpCounts(request.getCount());
         }
 
-        if(request.getType().equals("SQUAT")) {
+        if(request.getExType().equals("SQUAT")) {
             user.addSquatCounts(request.getCount());
         }
 
@@ -49,7 +49,7 @@ public class ExerciseService {
         Exercise exercise = exerciseRepository.save(Exercise.builder()
                 .count(request.getCount())
                 .user(user)
-                .exType(Exercise.ExerciseType.valueOf(request.getType()))
+                .exType(Exercise.ExerciseType.valueOf(request.getExType()))
                 .build());
 
         return new ExerciseResponse(exercise.getId(), exercise.getCount(), exercise.getExerciseDate(), exercise.getExType().getExType());

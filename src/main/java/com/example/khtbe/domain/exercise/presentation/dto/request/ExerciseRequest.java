@@ -14,5 +14,5 @@ public class ExerciseRequest {
     private Integer count;
 
     @NotBlank
-    private String type;
+    private String exType;
 }
