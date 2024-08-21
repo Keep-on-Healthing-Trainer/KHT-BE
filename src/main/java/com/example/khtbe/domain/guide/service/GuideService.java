@@ -15,8 +15,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
+
 @Service
 @RequiredArgsConstructor
 public class GuideService {
@@ -49,7 +52,10 @@ public class GuideService {
         User user = userUtil.getUser();
         Set<tagsEnum> uncomfortableParts = user.getUncomfortableParts();
 
-        return guideRepository.findRandomRecommendedGuides(uncomfortableParts);
+        List<Guide> allGuides = guideRepository.findGuidesExcludingUncomfortableParts(uncomfortableParts);
+
+        Collections.shuffle(allGuides);
+        return allGuides.stream().limit(6).collect(Collectors.toList());
     }
 }
 
