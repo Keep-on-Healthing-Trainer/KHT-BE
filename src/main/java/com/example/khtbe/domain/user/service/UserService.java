@@ -56,7 +56,7 @@ public class UserService {
                 .map(user -> UserDetailResponse.builder()
                         .name(user.getName())
                         .userId(user.getUserId())
-                        .profileImgeUrl(s3Util.getProfileImageUrl(user.getPath())) // 프로필 이미지 URL 설정
+                        .profileImgeUrl(s3Util.getProfileImageUrl(user.getPath()))
                         .totalCounts(user.getTotalCounts())
                         .squatCounts(user.getSquatCounts())
                         .pushUpCounts(user.getPushUpCounts())
