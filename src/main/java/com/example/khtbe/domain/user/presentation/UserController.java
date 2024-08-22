@@ -1,6 +1,5 @@
 package com.example.khtbe.domain.user.presentation;
 
-import com.example.khtbe.domain.user.domain.User;
 import com.example.khtbe.domain.user.presentation.dto.request.LoginRequest;
 import com.example.khtbe.domain.user.presentation.dto.request.SignupRequest;
 import com.example.khtbe.domain.user.presentation.dto.request.UpdateRequest;

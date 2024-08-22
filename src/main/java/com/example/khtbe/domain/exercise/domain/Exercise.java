@@ -1,7 +1,11 @@
 package com.example.khtbe.domain.exercise.domain;
 
 import com.example.khtbe.domain.user.domain.User;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;

@@ -8,10 +8,6 @@ import com.example.khtbe.domain.guide.presentation.dto.response.ReturnGuideIdRes
 import com.example.khtbe.domain.user.domain.User;
 import com.example.khtbe.domain.user.service.util.UserUtil;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

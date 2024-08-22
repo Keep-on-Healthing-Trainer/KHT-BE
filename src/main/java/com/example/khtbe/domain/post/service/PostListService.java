@@ -3,10 +3,8 @@ package com.example.khtbe.domain.post.service;
 import com.example.khtbe.domain.post.domain.Post;
 import com.example.khtbe.domain.post.domain.repository.PostRepository;
 import com.example.khtbe.domain.post.presentation.dto.response.PostListResponse;
-import com.example.khtbe.domain.user.service.util.UserUtil;
 import com.example.khtbe.infra.aws.util.S3Util;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

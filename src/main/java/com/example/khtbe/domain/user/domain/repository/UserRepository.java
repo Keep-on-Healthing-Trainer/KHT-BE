@@ -1,6 +1,5 @@
 package com.example.khtbe.domain.user.domain.repository;
 
-import com.example.khtbe.domain.guide.domain.Guide;
 import com.example.khtbe.domain.user.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
