@@ -25,7 +25,7 @@ spring:
 cloud:
   aws:
     s3:
-      default-image: ${S3_DF}
+      default-image: https://khtback.s3.ap-northeast-2.amazonaws.com/kthdf.png
       url: ${S3_URL}
       bucket: ${S3_BK}
     credentials:
