@@ -25,5 +25,7 @@ public class GuideRequest {
 
     private String path;
 
+    private String thumbnail;
+
     private List<tagsEnum> tags;
 }

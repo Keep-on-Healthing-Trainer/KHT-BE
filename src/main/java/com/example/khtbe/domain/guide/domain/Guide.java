@@ -44,8 +44,10 @@ public class Guide {
 
     private String path;
 
+    private String thumbnail;
+
     @Builder
-    public Guide(String title, String startPosture, String exerciseMethod, String warning, String introduction, String path, Set<tagsEnum> tags){
+    public Guide(String title, String startPosture, String exerciseMethod, String warning, String introduction, String path, Set<tagsEnum> tags, String thumbnail){
         this.title = title;
         this.startPosture = startPosture;
         this.exerciseMethod = exerciseMethod;
@@ -53,5 +55,6 @@ public class Guide {
         this.introduction = introduction;
         this.path = path;
         this.tags = tags;
+        this.thumbnail = thumbnail;
     }
 }

@@ -32,6 +32,7 @@ public class GuideService {
                 .introduction(request.getIntroduction())
                 .path(request.getPath())
                 .tags(Set.copyOf(request.getTags()))
+                .thumbnail(request.getThumbnail())
                 .build());
 
         return new ReturnGuideIdResponse(guide.getId());
