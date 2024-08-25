@@ -14,8 +14,6 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.UUID;
 
-import static org.aspectj.weaver.tools.cache.SimpleCacheFactory.path;
-
 @RequiredArgsConstructor
 @Component
 public class S3Util {
