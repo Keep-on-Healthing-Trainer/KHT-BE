@@ -37,12 +37,12 @@ public class WebSocketHandler extends TextWebSocketHandler {
         String payload = message.getPayload();
         log.info("payload {}", payload);
 
-        // 페이로드 -> MessageDto로 변환
         MessageDto messageDto = mapper.readValue(payload, MessageDto.class);
         log.info("session {}", messageDto.toString());
 
         UUID sessionId = messageDto.getSessionId();
-        // 메모리 상에 채팅방에 대한 세션 없으면 만들어줌
+
+        // 메모리 상에 세션 아이디에 대한 세션 없으면 만들어줌
         if(!sessionMap.containsKey(sessionId)){
             sessionMap.put(sessionId,new HashSet<>());
         }
@@ -52,7 +52,7 @@ public class WebSocketHandler extends TextWebSocketHandler {
         // 이때 message 에서 getType 으로 가져온 내용이
         // ChatDTO 의 열거형인 MessageType 안에 있는 ENTER 과 동일한 값이라면
         if (messageDto.getMessageType().equals(MessageDto.MessageType.ENTER)) {
-            // sessions 에 넘어온 session 을 담고,
+            // sessions 에 넘어온 session 을 담는다.
             uuSession.add(session);
         }
         if (uuSession.size()>=3) {
@@ -69,7 +69,6 @@ public class WebSocketHandler extends TextWebSocketHandler {
         sessions.remove(session);
     }
 
-    // ====== 채팅 관련 메소드 ======
     private void removeClosedSession(Set<WebSocketSession> chatRoomSession) {
         chatRoomSession.removeIf(sess -> !sessions.contains(sess));
     }
@@ -77,7 +76,6 @@ public class WebSocketHandler extends TextWebSocketHandler {
     private void sendMessageToChatRoom(MessageDto messageDto, Set<WebSocketSession> uuSession) {
         sessions.parallelStream().forEach(sess -> sendMessage(sess, messageDto));//2
     }
-
 
     public <T> void sendMessage(WebSocketSession session, T message) {
         try{
