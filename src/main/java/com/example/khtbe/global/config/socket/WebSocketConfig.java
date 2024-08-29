@@ -13,7 +13,6 @@ import org.springframework.web.socket.server.support.HttpSessionHandshakeInterce
 @EnableWebSocket
 @RequiredArgsConstructor
 public class WebSocketConfig implements WebSocketConfigurer {
-
     private final WebSocketHandler webSocketHandler;
 
     @Override
