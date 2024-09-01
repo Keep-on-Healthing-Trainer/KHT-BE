@@ -54,7 +54,7 @@ public class ExerciseService {
 
         return new ExerciseResponse(exercise.getId(), exercise.getCount(), exercise.getExerciseDate(), exercise.getExType().getExType());
     }
-    
+
     @Transactional
     public ExerciseGraphResponse exerciseGraph(Pageable pageable) {
         User user = userUtil.getUser();
