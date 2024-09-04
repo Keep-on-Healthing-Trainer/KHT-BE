@@ -10,7 +10,6 @@ import com.example.khtbe.domain.user.service.UserLoginService;
 import com.example.khtbe.domain.user.service.UserService;
 import com.example.khtbe.domain.user.service.UserSignupService;
 import com.example.khtbe.domain.user.service.util.UserUtil;
-import com.example.khtbe.infra.aws.util.S3Util;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +17,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
@@ -29,7 +27,6 @@ public class UserController {
     private final TokenRefreshService tokenRefreshService;
     private final UserService userService;
     private final UserUtil userUtil;
-    private final S3Util s3Util;
 
     @PostMapping(value = "/signup")
     @ResponseStatus(HttpStatus.CREATED)
