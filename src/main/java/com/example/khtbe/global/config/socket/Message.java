@@ -1,6 +1,10 @@
 package com.example.khtbe.global.config.socket;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
 @Builder
 @Getter
