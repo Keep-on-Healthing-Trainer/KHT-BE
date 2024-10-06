@@ -1,6 +1,5 @@
 package com.example.khtbe.global.config.socket;
 
-import com.example.khtbe.global.config.socket.dto.MessageDto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Builder;
 import lombok.Getter;
@@ -8,7 +7,6 @@ import org.springframework.web.socket.WebSocketSession;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.util.UUID;
 
 @Getter
 public class SocketSession {
